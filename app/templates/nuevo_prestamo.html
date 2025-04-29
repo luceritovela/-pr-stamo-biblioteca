@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuevo Préstamo{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Registrar Nuevo Préstamo</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="estudiante_id" class="form-label">Estudiante</label>
+                        <select class="form-select" id="estudiante_id" name="estudiante_id" required>
+                            <option value="">Seleccione un estudiante</option>
+                            {% for estudiante in estudiantes %}
+                            <option value="{{ estudiante.id }}">{{ estudiante.nombre }} - {{ estudiante.matricula }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="recurso_id" class="form-label">Recurso</label>
+                        <select class="form-select" id="recurso_id" name="recurso_id" required>
+                            <option value="">Seleccione un recurso</option>
+                            {% for recurso in recursos %}
+                            <option value="{{ recurso.id }}">{{ recurso.nombre }} - {{ recurso.tipo }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Registrar Préstamo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

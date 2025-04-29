@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Nuevo Recurso{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Agregar Nuevo Recurso</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre del Recurso</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipo" class="form-label">Tipo de Recurso</label>
+                        <select class="form-select" id="tipo" name="tipo" required>
+                            <option value="">Seleccione un tipo</option>
+                            <option value="Libro">Libro</option>
+                            <option value="Revista">Revista</option>
+                            <option value="Material Didáctico">Material Didáctico</option>
+                            <option value="Equipo">Equipo</option>
+                        </select>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Agregar Recurso</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

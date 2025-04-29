@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Préstamos del Estudiante{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Préstamos de {{ estudiante.nombre }}</h2>
+        <p class="mb-0">Matrícula: {{ estudiante.matricula }}</p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Recurso</th>
+                        <th>Fecha Préstamo</th>
+                        <th>Fecha Devolución</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prestamo in estudiante.prestamos %}
+                    <tr>
+                        <td>{{ prestamo.recurso.nombre }}</td>
+                        <td>{{ prestamo.fecha_prestamo.strftime('%Y-%m-%d') }}</td>
+                        <td>
+                            {% if prestamo.fecha_devolucion %}
+                            {{ prestamo.fecha_devolucion.strftime('%Y-%m-%d') }}
+                            {% else %}
+                            -
+                            {% endif %}
+                        </td>
+                        <td>{{ prestamo.estado }}</td>
+                        <td>
+                            {% if prestamo.estado == 'activo' %}
+                            <a href="{{ url_for('devolver_prestamo', prestamo_id=prestamo.id) }}" 
+                               class="btn btn-sm btn-success">Devolver</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

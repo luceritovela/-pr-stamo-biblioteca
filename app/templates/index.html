@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1>Bienvenido a la Biblioteca Universitaria</h1>
+    {% if not session.user_id %}
+    <p class="mt-4">
+        <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg">Iniciar Sesión</a>
+    </p>
+    {% else %}
+    <p class="mt-4">
+        <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg">Ir al Dashboard</a>
+    </p>
+    {% endif %}
+</div>
+{% endblock %}
